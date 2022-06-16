@@ -1,0 +1,45 @@
+-- create store database
+/**clothing_store
+id, bouquet name, quantity, popularity, price
+(1, peonies, 7, 2, 62.49)
+(2, roses, 5, 1, $25)
+(3, baby's breath, 3, 3, $12.99)
+(4, tulips, 8, 4, $32)
+(5, carnations, 4, 6, $15.99)
+(6, dasies, 4, 5, $20.25)
+**/
+
+CREATE TABLE flower_shop (id INTEGER PRIMARY KEY, bouquet_name TEXT, stock INTEGER, popularity INTEGER, price INTEGER);
+
+INSERT INTO flower_shop VALUES (1, "Blushing Peonies", 7, 2, 62.49);
+INSERT INTO flower_shop VALUES (2, "Red Roses", 5, 1, 25);
+INSERT INTO Flower_shop VALUES (3, "Baby's Breath", 3, 3, 12.99);
+INSERT INTO flower_shop VALUES (4, "Spring Tulips", 8, 4, 32.00);
+INSERT INTO flower_shop VALUES (5, "Pink Dream Carnations", 4, 6, 15.99);
+INSERT INTO flower_shop VALUES (6, "Sweet Daisies", 4, 5, 20.25);
+
+SELECT * FROM flower_shop;
+
+--sort items by price low to high
+
+SELECT * FROM flower_shop ORDER BY price;
+
+--display total inventory # of all bouquets 
+
+SELECT SUM(stock) FROM flower_shop;
+
+--display most expensive item
+
+SELECT bouquet_name, MAX(price) FROM flower_shop;
+
+--order by most to least popular, include pricing
+
+SELECT popularity, SUM(price) FROM flower_shop GROUP BY popularity; 
+
+--display bouquet options under $25
+
+SELECT * FROM flower_shop WHERE price <25;
+
+--display most stocked item
+
+SELECT bouquet_name, MAX(stock) FROM flower_shop;

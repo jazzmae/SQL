@@ -1,0 +1,29 @@
+-- Question 1: Write a query that orders items by price.  
+-- Question 2: Write a query that shows a statistic about price, like sum, average, max, min, etc. 
+-- Question 3: Write a query that shows a statistic about price for items in the "Kitchen Supplies" column. 
+-- Question 4: What is the lowest priced item for each category?
+-- Question 5: What are the highest rated items in each category?
+
+SELECT * FROM superstore LIMIT 5;
+
+-- Answer 1:
+SELECT * FROM superstore ORDER BY price DESC;
+
+-- Answer 2:
+SELECT MIN(price) FROM superstore;
+
+-- Answer 3:
+SELECT MAX(price), item_name, category
+FROM superstore
+WHERE category="Kitchen Supplies"
+ORDER BY price;
+
+-- Answer 4: 
+SELECT MIN(price), item_name, category
+FROM superstore
+GROUP BY category;
+
+-- Answer 5: 
+SELECT MAX(average_rating), item_name, category
+FROM superstore
+GROUP BY category;
